@@ -1,0 +1,103 @@
+<div class="row mt-3">
+  <div class="col-md-12">
+    <table class="table table-borderless">
+      <thead>
+      <tr>
+        <th>
+          <button class="w-100" mat-raised-button>Thêm phòng mới</button>
+        </th>
+        <th>Tên phòng:</th>
+        <th>
+          <input class="form-control w-75">
+        </th>
+        <th>Tầng:</th>
+        <th>
+          <input class="form-control w-75">
+        </th>
+        <th>Khu vực:</th>
+        <th>
+          <select class="custom-select w-75">
+            <option selected>Chọn</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+          </select>
+        </th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <th></th>
+        <th>Trạng thái:</th>
+        <th>
+          <select class="custom-select w-75">
+            <option selected>Chọn</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+          </select>
+        </th>
+        <th>Loại phòng:</th>
+        <th>
+          <select class="custom-select w-75">
+            <option selected>Chọn</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+          </select>
+        </th>
+        <th>Sức chứa:</th>
+        <th>
+          <input class="form-control w-75">
+        </th>
+        <th>
+          <button class="w-100" mat-raised-button>Tìm kiếm</button>
+        </th>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped text-center">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col">STT</th>
+        <th scope="col">Tên phòng</th>
+        <th scope="col">Tầng</th>
+        <th scope="col">Khu vực</th>
+        <th scope="col">Trạng thái</th>
+        <th scope="col">Loại phòng</th>
+        <th scope="col">Sức chứa</th>
+        <th scope="col">Chi tiết</th>
+        <th scope="col">Sửa</th>
+        <th scope="col">Xóa</th>
+      </tr>
+      </thead>
+      <tbody>
+      <ng-container *ngFor="let room of listRoom">
+      <tr>
+        <th scope="row">{{room.id}}</th>
+        <td>{{room.roomName}}</td>
+        <td>{{room.roomFloor}}</td>
+        <td>{{room.region.regionName }}</td>
+        <td>{{room.status.statusName}}</td>
+        <td>{{room.typeRoom.nameTypeRoom}}</td>
+        <td>{{room.roomCapacity}}</td>
+        <td><button class="btn"><span class="fas fa-eye"></span></button></td>
+        <td><button class="btn"><span class="fas fa-pencil-alt"></span></button></td>
+        <td><button class="btn"><span class="fas fa-trash-alt"></span></button></td>
+      </tr>
+      </ng-container>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <mat-paginator [length]="50"
+                   [pageSize]="8">
+    </mat-paginator>
+  </div>
+</div>
