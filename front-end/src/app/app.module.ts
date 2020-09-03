@@ -13,6 +13,10 @@ import {EmployeeComponent} from './employee/employee.component';
 import {PagenotfoundComponent} from './pagenotfound/pagenotfound.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ToastrModule} from 'ngx-toastr';
+import {NgbDropdownModule} from '@ng-bootstrap/ng-bootstrap';
+import {HTTP_INTERCEPTORS} from '@angular/common/http';
+import {AuthInterceptor} from './auth/auth-interceptor';
+import {FacebookLoginProvider, GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule} from 'angularx-social-login';
 
 @NgModule({
   declarations: [
@@ -22,20 +26,46 @@ import {ToastrModule} from 'ngx-toastr';
     UserComponent,
     PagenotfoundComponent,
       ],
-  imports: [
-    AdminModule,
-    EmployeeModule,
-    ShareModule,
-    AppRoutingModule,
-    MaterialModule,
-    UserModule,
-    BrowserAnimationsModule,
-    ToastrModule.forRoot({
-      timeOut: 2000,
-      positionClass: 'toast-top-center'
-    }),
+    imports: [
+        AdminModule,
+        EmployeeModule,
+        ShareModule,
+        AppRoutingModule,
+        MaterialModule,
+        UserModule,
+        BrowserAnimationsModule,
+        ToastrModule.forRoot({
+            timeOut: 2000,
+            positionClass: 'toast-top-center'
+        }),
+        NgbDropdownModule,
+      SocialLoginModule
+    ],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    },
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider(
+              'clientId'
+            ),
+          },
+          {
+            id: FacebookLoginProvider.PROVIDER_ID,
+            provider: new FacebookLoginProvider('clientId'),
+          },
+        ],
+      } as SocialAuthServiceConfig,
+    }
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {

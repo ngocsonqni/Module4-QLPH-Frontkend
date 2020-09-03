@@ -3,11 +3,11 @@ import {Routes, RouterModule} from '@angular/router';
 import {AdminRoutingModule} from './admin/admin-routing.module';
 import {EmployeeRoutingModule} from './employee/employee-routing.module';
 import {PagenotfoundComponent} from './pagenotfound/pagenotfound.component';
-import {UserComponent} from './user/user.component';
 import {UserRoutingModule} from './user/user-routing.module';
+import {UserLoginComponent} from './user/user-login/user-login.component';
 
 const routes: Routes = [
-  {path: '', component: UserComponent},
+  {path: '', component: UserLoginComponent},
   {path: '**', component: PagenotfoundComponent}
 ];
 

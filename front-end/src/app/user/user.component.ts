@@ -1,4 +1,6 @@
 import {Component, OnInit} from '@angular/core';
+import {TokenStorageService} from '../auth/token-storage.service';
+import {SocialAuthService} from 'angularx-social-login';
 
 
 @Component({
@@ -9,9 +11,19 @@ import {Component, OnInit} from '@angular/core';
 export class UserComponent implements OnInit {
 
 
-  constructor() {
+  constructor(private tokenStorage: TokenStorageService,
+              private socialAuthService: SocialAuthService) {
   }
 
   ngOnInit(): void {}
 
+  getBg(): string {
+    return 'url(\'https://cdn.hipwallpaper.com/i/76/78/UeGbja.jpg\')';
+  }
+
+  signOut(): void {
+    this.tokenStorage.signOut();
+    this.socialAuthService.signOut();
+    window.location.reload();
+  }
 }

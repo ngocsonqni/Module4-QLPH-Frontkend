@@ -1,4 +1,37 @@
-<router-outlet></router-outlet>
+<div class="row card-header">
+  <div class="col-md-10 left-navbar">
+    <a href="#" class="btn" style="margin-left: 10%">Danh sách phòng họp</a>&nbsp;
+    <div ngbDropdown class="d-inline-block zxc">
+      <button class="btn " id="dropdownBasic1" ngbDropdownToggle>Đăng ký phòng họp</button>
+      <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+        <button ngbDropdownItem>Tìm kiếm phòng họp</button>
+        <button ngbDropdownItem>Đăng ký phòng họp</button>
+        <button ngbDropdownItem>Lịch sử đăng ký</button>
+      </div>
+
+    </div>
+    <a href="#" class="btn" style="margin-left: 10%">Thông báo</a>
+    <a href="#" class="btn" style="margin-left: 10%">Phản hồi</a>
+  </div>
+  <div class="col-md-2 right-navbar">
+    <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle float-right user" type="button" id="dropdownMenuButton"
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-left: 20%">
+        User1
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item" href="#">Đổi mật khẩu</a>
+        <a class="dropdown-item" (click)="signOut()" >Đăng xuất</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+<div class="bg" [ngStyle]="{'background-image':getBg()}">
+  <div class="container-fluid content">
+    <router-outlet></router-outlet>
+  </div>
+</div>
 
 
 
