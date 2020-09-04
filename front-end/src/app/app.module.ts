@@ -13,6 +13,8 @@ import {EmployeeComponent} from './employee/employee.component';
 import {PagenotfoundComponent} from './pagenotfound/pagenotfound.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ToastrModule} from 'ngx-toastr';
+import {FlexLayoutModule} from '@angular/flex-layout';
+
 
 @NgModule({
   declarations: [
@@ -21,7 +23,7 @@ import {ToastrModule} from 'ngx-toastr';
     EmployeeComponent,
     UserComponent,
     PagenotfoundComponent,
-      ],
+  ],
   imports: [
     AdminModule,
     EmployeeModule,
@@ -34,6 +36,7 @@ import {ToastrModule} from 'ngx-toastr';
       timeOut: 2000,
       positionClass: 'toast-top-center'
     }),
+    FlexLayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]

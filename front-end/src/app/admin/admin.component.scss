@@ -1,0 +1,29 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+mat-toolbar {
+  background-color: dodgerblue;
+  color: white;
+}
+.notification{
+  padding:10px;
+  font-size: 15px;
+}
+$mat-card-header-size: 40px !default;
+
+.mat-card-avatar {
+  height: $mat-card-header-size;
+  width: $mat-card-header-size;
+  border-radius: 50%;
+  flex-shrink: 0;
+  object-fit: cover;
+  //background: #000;
+}
+mat-list-item:hover{
+  background-color: #cce7f8;
+}
+mat-toolbar-row  a:hover {
+  color: white;
+  text-decoration: none;
+}
