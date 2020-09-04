@@ -13,6 +13,11 @@ import {MatBadgeModule} from '@angular/material/badge';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatCardModule} from '@angular/material/card';
 import {MatListModule} from '@angular/material/list';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatChipsModule} from '@angular/material/chips';
+import {MatRadioModule} from '@angular/material/radio';
+import {MatSelectModule} from '@angular/material/select';
+import {NgxMatDatetimePickerModule, NgxMatNativeDateModule} from '@angular-material-components/datetime-picker';
 
 @NgModule({
   declarations: [],
@@ -31,6 +36,14 @@ import {MatListModule} from '@angular/material/list';
     MatMenuModule,
     MatCardModule,
     MatListModule,
+    MatCheckboxModule,
+    MatChipsModule,
+    MatCardModule,
+    MatRadioModule,
+    MatSelectModule,
+    MatButtonModule,
+    NgxMatDatetimePickerModule,
+    NgxMatNativeDateModule
   ], exports: [
     MatDatepickerModule,
     MatFormFieldModule,
@@ -45,6 +58,14 @@ import {MatListModule} from '@angular/material/list';
     MatMenuModule,
     MatCardModule,
     MatListModule,
+    MatCheckboxModule,
+    MatChipsModule,
+    MatCardModule,
+    MatRadioModule,
+    MatSelectModule,
+    MatButtonModule,
+    NgxMatDatetimePickerModule,
+    NgxMatNativeDateModule
   ],
   providers: [MatDatepickerModule],
 })
