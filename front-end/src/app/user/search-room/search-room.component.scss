@@ -1,0 +1,52 @@
+* {
+  font-family: "Times New Roman";
+}
+
+.head-title {
+  color: white;
+
+}
+
+.table-search {
+  margin: 0 8%;
+  width: 85%;
+}
+
+.input-select {
+  width: 100%;
+}
+
+.input-date {
+  color: black;
+}
+
+.list-asset {
+  width: 100%;
+}
+
+.btn-search {
+  background-color: #5680E9 !important;
+  color: white;
+  font-weight: bold;
+  border: none;
+  outline: none;
+}
+
+::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background {
+  background-color: #5da9d0;
+}
+
+.container-fluid {
+  background-image: url("https://cdn.hipwallpaper.com/i/76/78/UeGbja.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+}
+
+.form-search {
+  background-color: white;
+}
+
+.title-content {
+  color: red;
+}

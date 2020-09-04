@@ -4,12 +4,12 @@ import {Status} from './status';
 
 export class Room {
   id: number;
-  roomName: string;
-  roomArea: number;
-  roomFloor: number;
-  roomCapacity: number;
-  delete_flag: boolean;
-  typeRoom: TypeRoom;
+  name: string;
+  area: number;
+  floor: number;
+  capacity: number;
+  deleteFlag: boolean;
+  typeroom: TypeRoom;
   region: Region;
   status: Status;
 }
