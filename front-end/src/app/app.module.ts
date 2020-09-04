@@ -59,7 +59,8 @@ import {FacebookLoginProvider, GoogleLoginProvider, SocialAuthServiceConfig, Soc
     _MatMenuDirectivesModule,
     MatMenuModule,
     MatPaginatorModule,
-      ],
+    SocialLoginModule,
+    NgbDropdownModule],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
