@@ -5,11 +5,22 @@ import {PagenotfoundComponent} from './pagenotfound/pagenotfound.component';
 import {UserComponent} from './user/user.component';
 import {UserRoutingModule} from './user/user-routing.module';
 import {AdminComponent} from './admin/admin.component';
+import {ManagementNewBookingComponent} from './admin/management-new-booking/management-new-booking.component';
 
 const routes: Routes = [
-  {path: 'user', component: UserComponent},
-  {path: 'admin', component: AdminComponent},
-  {path: '**', component: PagenotfoundComponent}
+  {
+    path: 'admin',
+    component: AdminComponent,
+    children: [{
+      path: 'new-booking', component: ManagementNewBookingComponent
+    }]
+  },
+  {
+    path: 'user', component: UserComponent},
+
+  {
+    path: '**', component: PagenotfoundComponent}
+
 ];
 
 @NgModule({
