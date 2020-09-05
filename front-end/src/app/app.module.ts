@@ -20,6 +20,8 @@ import {MatOptionModule} from '@angular/material/core';
 import {MatSelectModule} from '@angular/material/select';
 import {_MatMenuDirectivesModule, MatMenuModule} from '@angular/material/menu';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import {DialogResultTableComponent} from './user/search-room/search-room.component';
+import {MatTableModule} from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     AdminComponent,
     UserComponent,
     PagenotfoundComponent,
+    DialogResultTableComponent
   ],
   imports: [
     AdminModule,
@@ -50,6 +53,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     _MatMenuDirectivesModule,
     MatMenuModule,
     MatPaginatorModule,
+    MatTableModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
