@@ -21,9 +21,12 @@ $mat-card-header-size: 40px !default;
   //background: #000;
 }
 mat-list-item:hover{
-  background-color: #cce7f8;
+  background-color: #f7f6f2;
 }
 mat-toolbar-row  a:hover {
   color: white;
   text-decoration: none;
+}
+mat-list {
+  padding: 0;
 }

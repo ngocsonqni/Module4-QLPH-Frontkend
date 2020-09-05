@@ -1,5 +1,103 @@
+<mat-toolbar class="">
+  <mat-toolbar-row class="">
+    <a fxHide="" fxShow.xs="" [mat-menu-trigger-for]="mainMenu"  mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+      <mat-icon>menu</mat-icon>
+    </a>
+
+    <mat-menu #mainMenu="matMenu">
+      <span mat-menu-item routerLink="list-room">
+        <span >DANH SÁCH PHÒNG HỌP</span>
+      </span >
+
+      <span mat-menu-item [matMenuTriggerFor]="menuRegistryRoom" >
+        <span >ĐĂNG KÝ PHÒNG HỌP</span>
+      </span>
+      <span mat-menu-item>
+        <span >THÔNG BÁO</span>
+      </span>
+      <a mat-menu-item>
+        <span>PHẢN HỒI</span>
+      </a>
+
+    </mat-menu>
+    <span>CodeUser</span>
+    <span class="example-spacer"></span>
+
+    <div fxHide.sm="" fxHide.xs="">
+      <a mat-button routerLink="list-room">DANH SÁCH PHÒNG HỌP</a>
+
+      <a mat-button  [matMenuTriggerFor]="menuRegistryRoom" >ĐĂNG KÝ PHÒNG HỌP</a>
+      <mat-menu #menuRegistryRoom="matMenu">
+        <span mat-menu-item  routerLink="search-room">
+          <mat-icon>search</mat-icon>
+          <span>Tìm kiếm phòng họp</span>
+        </span>
+        <span mat-menu-item >
+          <mat-icon>gavel</mat-icon>
+          <span>Đăng ký  phòng họp</span>
+        </span>
+        <span mat-menu-item>
+          <mat-icon>grading</mat-icon>
+          <span>Lịch sử đăng ký</span>
+        </span>
+      </mat-menu>
+      <a mat-button>THÔNG BÁO</a>
+      <a mat-button>PHẢN HỒI</a>
+    </div>
+    <span class="example-spacer"></span>
+
+    <a mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+      <mat-icon style=" font-size: 30px;">mail</mat-icon>
+    </a>
+
+    <a mat-icon-button matBadge="8" matBadgeColor="warn" [matMenuTriggerFor]="menu">
+      <mat-icon style=" font-size: 30px" class="toolbar-icon">notifications</mat-icon>
+    </a>
+
+    <mat-menu #menu="matMenu" >
+      <mat-list>
+        <mat-list-item >
+          <img class="notification-avatar" src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="" mat-list-avatar/>
+          <div mat-line>thanh vừa đặt phòng mới</div>
+          <div mat-line>4 giò trước</div>
+          <div mat-line><a href="">Xem chi tiết</a></div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item >
+          <img class="notification-avatar"  src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="" mat-list-avatar/>
+          <div mat-line>thanh vừa đặt phòng mới để làm cái chi đó không biết nữa</div>
+          <div mat-line>4 giò trước</div>
+          <div mat-line><a href="">Xem chi tiết</a></div>
+        </mat-list-item>
+      </mat-list>
+    </mat-menu>
+
+    <div class="pl-3">
+      <img class="mat-card-avatar avatar" src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="">
+
+    </div>
+    <a style="padding-left: 0" mat-button [matMenuTriggerFor]="menuAccount">
+      thanhtv
+    </a>
+
+    <mat-menu #menuAccount="matMenu">
+    <span mat-menu-item  routerLink="">
+      <mat-icon>login</mat-icon>
+      <span>Đăng xuất</span>
+    </span>
+
+      <span mat-menu-item>
+      <mat-icon>fingerprint</mat-icon>
+      <span>Đổi mật khẩu</span>
+    </span>
+    </mat-menu>
+
+  </mat-toolbar-row>
+  <mat-toolbar-row fxHide="" fxShow.sm=""  fxLayoutAlign="space-between center">
+    <a mat-button routerLink="list-room">DANH SÁCH PHÒNG HỌP</a>
+    <a mat-button  [matMenuTriggerFor]="menuRegistryRoom">ĐĂNG KÝ PHÒNG HỌP</a>
+    <a mat-button>THÔNG BÁO</a>
+    <a mat-button>PHẢN HỒI</a>
+  </mat-toolbar-row>
+</mat-toolbar>
 <router-outlet></router-outlet>
-
-
-
-
