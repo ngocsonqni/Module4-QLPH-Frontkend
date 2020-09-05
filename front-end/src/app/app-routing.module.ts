@@ -6,20 +6,32 @@ import {UserComponent} from './user/user.component';
 import {UserRoutingModule} from './user/user-routing.module';
 import {AdminComponent} from './admin/admin.component';
 import {ManagementNewBookingComponent} from './admin/management-new-booking/management-new-booking.component';
+import {SearchRoomComponent} from './user/search-room/search-room.component';
+import {RoomComponent} from './admin/room/room.component';
 
 const routes: Routes = [
   {
     path: 'admin',
     component: AdminComponent,
-    children: [{
-      path: 'new-booking', component: ManagementNewBookingComponent
-    }]
+    children: [
+      {
+        path: 'new-booking', component: ManagementNewBookingComponent
+      },
+      {
+        path: 'room', component: RoomComponent
+      }]
   },
   {
-    path: 'user', component: UserComponent},
+    path: 'user',
+    component: UserComponent,
+    children: [{
+      path: 'search-room', component: SearchRoomComponent
+    }]
+  },
 
   {
-    path: '**', component: PagenotfoundComponent}
+    path: '**', component: PagenotfoundComponent
+  }
 
 ];
 

@@ -1,8 +1,8 @@
 <mat-toolbar class="">
 <mat-toolbar-row class="">
-  <button fxHide="" fxShow.xs="" [mat-menu-trigger-for]="mainMenu"  mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+  <a fxHide="" fxShow.xs="" [mat-menu-trigger-for]="mainMenu"  mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
     <mat-icon>menu</mat-icon>
-  </button>
+  </a>
 
   <mat-menu #mainMenu="matMenu">
     <a mat-menu-item>
@@ -34,11 +34,11 @@
   <span class="example-spacer"></span>
 
   <a mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-    <mat-icon>mail</mat-icon>
+    <mat-icon style=" font-size: 30px;">mail</mat-icon>
   </a>
 
   <a mat-icon-button matBadge="8" matBadgeColor="warn" [matMenuTriggerFor]="menu">
-    <mat-icon class="toolbar-icon">notifications</mat-icon>
+    <mat-icon style=" font-size: 30px" class="toolbar-icon">notifications</mat-icon>
   </a>
 
   <mat-menu #menu="matMenu" >
@@ -68,15 +68,15 @@
   </a>
 
   <mat-menu #menuAccount="matMenu">
-    <a mat-menu-item>
+    <span mat-menu-item  routerLink="">
       <mat-icon>login</mat-icon>
       <span>Đăng xuất</span>
-    </a>
+    </span>
 
-    <a mat-menu-item>
+    <span mat-menu-item>
       <mat-icon>fingerprint</mat-icon>
       <span>Đổi mật khẩu</span>
-    </a>
+    </span>
   </mat-menu>
 
 </mat-toolbar-row>
