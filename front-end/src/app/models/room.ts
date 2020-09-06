@@ -9,7 +9,7 @@ export class Room {
   floor: number;
   capacity: number;
   deleteFlag: boolean;
-  typeroom: TypeRoom;
+  typeRoom: TypeRoom;
   region: Region;
   status: Status;
 }

@@ -8,6 +8,7 @@ import {AdminComponent} from './admin/admin.component';
 import {ManagementNewBookingComponent} from './admin/management-new-booking/management-new-booking.component';
 import {SearchRoomComponent} from './user/search-room/search-room.component';
 import {RoomComponent} from './admin/room/room.component';
+import {TestComponent} from './user/test/test.component';
 
 const routes: Routes = [
   {
@@ -22,11 +23,14 @@ const routes: Routes = [
       }]
   },
   {
-    path: 'user',
-    component: UserComponent,
-    children: [{
-      path: 'search-room', component: SearchRoomComponent
-    }]
+    path: 'user', component: UserComponent,
+    children: [
+      {
+        path: 'search-room', component: SearchRoomComponent
+      },
+      {
+        path: 'test', component: TestComponent
+      }]
   },
 
   {
