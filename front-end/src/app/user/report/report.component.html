@@ -1,0 +1,73 @@
+<div class="row" style="margin-top: 100px">
+<div class="col-xl-2"></div>
+<div class="col-xl-8">
+  <h3 style="text-align: center">PHẢN HỒI</h3>
+
+  <div class="row">
+
+  </div>
+  <div>
+    <form [formGroup]="reportForm" (ngSubmit)="submitNotification()">
+      <div>
+        <mat-form-field>
+          <mat-select formControlName="room" placeholder="Chọn phòng" #singleSelect [(ngModel)]="room">
+            <mat-option>
+              <ngx-mat-select-search
+                placeholderLabel="Tìm phòng"
+                noEntriesFoundLabel="'Không có kết quả trùng khớp'"></ngx-mat-select-search>
+            </mat-option>
+            <mat-option *ngFor="let item of rooms" [value]="item">{{item.name}} </mat-option>
+          </mat-select>
+          <mat-error *ngIf="reportForm.get('room').invalid">Bạn chưa chọn phòng</mat-error>
+        </mat-form-field>
+
+      </div>
+   <div>
+     <mat-form-field class="example-chip-list">
+       <mat-chip-list #chipList aria-label="Reason selection">
+         <mat-chip
+           *ngFor="let reason of reasonList"
+           [selectable]="selectable"
+           [removable]="removable"
+           (removed)="remove(reason)">
+           {{reason}}
+           <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+         </mat-chip>
+         <input
+           placeholder="Chọn lý do phản hồi"
+           #fruitInput
+           [formControl]="reasonReport"
+           [matAutocomplete]="auto"
+           [matChipInputFor]="chipList"
+           [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+           (matChipInputTokenEnd)="add($event)">
+       </mat-chip-list>
+       <mat-autocomplete id="select" #auto="matAutocomplete" (optionSelected)="selected($event)">
+         <mat-option *ngFor="let reason of filteredReasons | async" [value]="reason">
+           {{reason}}
+         </mat-option>
+       </mat-autocomplete>
+     </mat-form-field>
+   </div>
+
+
+
+
+      <mat-form-field style="display: block; margin-top: 15px" appearance="outline">
+        <mat-label>Nội dung báo cáo :</mat-label>
+
+        <textarea matInput id="content" formControlName="content" cols="10" rows="12" style="line-height: 30px"></textarea>
+
+        <mat-error style="position: relative; left: -10px " *ngIf="reportForm.get('content').invalid">Bạn chưa nhập nội
+          dung báo cáo
+        </mat-error>
+      </mat-form-field>
+      <div class="example-button-row" style="margin-top: 10px">
+        <button mat-raised-button color="primary" type="submit">GỬI BÁO CÁO</button>
+      </div>
+
+    </form>
+  </div>
+
+</div>
+</div>
