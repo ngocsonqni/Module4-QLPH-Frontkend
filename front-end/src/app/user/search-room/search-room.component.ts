@@ -90,7 +90,7 @@ export class SearchRoomComponent implements OnInit {
 
   resuilt(): void {
     this.dialog.open(DialogResultTableComponent, {
-      width: '1400px',
+      width: '1500px',
       height: '500px',
       data: {
         data: this.resultSearchRoom,
