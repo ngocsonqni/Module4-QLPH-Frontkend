@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, Inject, OnInit, ViewChild} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {SearchRoomService} from '../../services/search-room.service';
 import {Region} from '../../models/region';
 import * as $ from 'jquery';
@@ -8,10 +8,6 @@ import {Room} from '../../models/room';
 import {TypeRoom} from '../../models/type-room';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {HttpClient} from '@angular/common/http';
-import {merge, Observable} from 'rxjs';
-import {MatPaginator} from '@angular/material/paginator';
-import {MatSort} from '@angular/material/sort';
-import {catchError, map, startWith, switchMap} from 'rxjs/operators';
 
 
 @Component({
