@@ -101,7 +101,7 @@ export class SearchRoomComponent implements OnInit {
         }
       });
     } else {
-      this.snackBar.openFromComponent(NotificationComponent, {
+      this.snackBar.openFromComponent(NotificationCustomComponent, {
         duration: 5 * 1000,
         horizontalPosition: 'end',
         verticalPosition: 'top'
@@ -114,7 +114,7 @@ export class SearchRoomComponent implements OnInit {
   selector: 'app-notification',
   templateUrl: 'notifical.html'
 })
-export class NotificationComponent {
+export class NotificationCustomComponent {
 }
 
 @Component({

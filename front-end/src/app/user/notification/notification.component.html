@@ -1,0 +1,95 @@
+
+<div class="row " style="margin-top: 100px">
+
+
+<div class="col-xl-2"></div>
+<div class="col-xl-8">
+  <h3 style="text-align: center">THÔNG BÁO</h3>
+  <div style="position: relative">
+    <div>
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 table-hover" matSort
+             (matSortChange)="sortData($event)"
+      >
+        <ng-container matColumnDef="seen">
+          <th mat-header-cell *matHeaderCellDef> #</th>
+          <td mat-cell *matCellDef="let element" style="padding-left: 0; text-align: center">
+            <span *ngIf="element.seen" class="material-icons readIcon">mark_email_read</span>
+            <span *ngIf="!element.seen" class="material-icons readIcon" style="color: blue">mark_email_unread</span>
+          </td>
+        </ng-container>
+        <!--         Position Column-->
+        <!--              <ng-container matColumnDef="id">-->
+        <!--                <th mat-header-cell *matHeaderCellDef mat-sort-header> STT</th>-->
+        <!--                <td mat-cell *matCellDef="let element"> {{element.id}} </td>-->
+        <!--              </ng-container>-->
+
+        <!--         Name Column-->
+        <ng-container matColumnDef="content">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> NỘI DUNG</th>
+          <td mat-cell *matCellDef="let element"
+              [ngClass]="{'highLight': element.seen===true, 'none': element.seen===false}"> {{element.notification.content}}  </td>
+        </ng-container>
+
+        <ng-container matColumnDef="status">
+          <th mat-header-cell *matHeaderCellDef> TÌNH TRẠNG</th>
+          <td mat-cell *matCellDef="let element"
+          > {{element.notification.status}}  </td>
+        </ng-container>
+
+        <!-- Request day Column -->
+        <ng-container matColumnDef="requestDate">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> NGÀY GỬI</th>
+          <td mat-cell *matCellDef="let element, index as i">{{element.notification.requestDate| date:'short'}}
+
+          </td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="repondDate">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header=""> NGÀY PHẢN HỒI</th>
+          <td mat-cell *matCellDef="let element, index as i">
+            <div class="divDate">
+              {{element.notification.repondDate | date :'short'}}
+            </div>
+            <div class="divButtonRow" style="margin-left: 10px">
+              <button class="btn buttonRow" matTooltip="Xóa thông báo"
+                      (click)="deleteNotificationById(element.id)"><span
+                class="material-icons iconRow">delete</span></button>
+            </div>
+            <div class="divButtonRow">
+              <button [disabled]="element.seen===true" class="btn buttonRow" (click)="markSeen(element.id)"
+                      matTooltip="Đánh dấu đã đọc"><span
+                class="material-icons">
+mark_email_read
+</span></button>
+            </div>
+            <div class="divButtonRow">
+              <button class="btn buttonRow" (click)="reportThisRoom(element.notification.room)"
+                      matTooltip="Báo cáo"><span
+                class="material-icons">
+reply
+</span></button>
+            </div>
+
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+            (dblclick)="openDialog(row)" class="trBody">
+        </tr>
+      </table>
+    </div>
+    <div>
+      <mat-paginator [length]="page.totalElements"
+                     [pageSize]="page.size"
+                     [pageSizeOptions]="[5, 10]"
+                     color="primary"
+                     [pageIndex]="page.number"
+                     (page)="getPaginatorData($event)"
+      >
+      </mat-paginator>
+    </div>
+  </div>
+</div>
+</div>
