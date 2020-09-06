@@ -48,6 +48,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     NgxMatNativeDateModule,
     MatDialogModule,
     MatProgressSpinnerModule,
+
   ], exports: [
     MatDatepickerModule,
     MatFormFieldModule,

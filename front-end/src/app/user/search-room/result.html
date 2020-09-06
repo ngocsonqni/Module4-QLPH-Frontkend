@@ -1,38 +1,43 @@
-<div class="example-container mat-elevation-z8">
-  <div class="example-table-container">
-    <table mat-table [dataSource]="dataSource" class="example-table"
-           matSort matSortActive="created" matSortDisableClear matSortDirection="desc" style="width: 100%">
-      <ng-container matColumnDef="name">
-        <th width="30%" mat-header-cell *matHeaderCellDef mat-sort-header> Tên phòng</th>
-        <td width="30%" mat-cell *matCellDef="let element"> {{element.name}} </td>
-      </ng-container>
-      <ng-container matColumnDef="floor">
-        <th width="8%" mat-header-cell *matHeaderCellDef mat-sort-header> Tầng</th>
-        <td width="8%" mat-cell *matCellDef="let element"> {{element.floor}} tầng</td>
-      </ng-container>
-      <ng-container matColumnDef="capacity">
-        <th width="10%" mat-header-cell *matHeaderCellDef mat-sort-header> Sức chứa</th>
-        <td width="10%" mat-cell *matCellDef="let element"> {{element.capacity}} người</td>
-      </ng-container>
-      <ng-container matColumnDef="area">
-        <th width="15%" mat-header-cell *matHeaderCellDef mat-sort-header> Diện tích phòng</th>
-        <td width="15%" mat-cell *matCellDef="let element"> {{element.area}} m2</td>
-      </ng-container>
-      <ng-container matColumnDef="asset">
-        <th width="32%" mat-header-cell *matHeaderCellDef mat-sort-header> Thiết bị hiện có</th>
-        <td width="32%" mat-cell *matCellDef="let element"> {{element.assetRoom}} </td>
-      </ng-container>
-      <ng-container matColumnDef="resgister">
-        <th width="5%" mat-header-cell *matHeaderCellDef mat-sort-header> Đăng kí</th>
-        <td width="5%" mat-cell *matCellDef="let element">
-          <button (click)="test(element.id)" mat-raised-button style="background-color: #5680E9 !important;
+<ng-container *ngIf="dataSource.length > 0">
+  <div class="example-container mat-elevation-z8" style="width: 1000px">
+    <div class="example-table-container">
+      <table mat-table [dataSource]="dataSource" class="example-table container-fluid px-0 py-0 mx-0 my-0"
+             width="1500px"
+             matSort matSortActive="created" matSortDisableClear matSortDirection="desc" style="width: 100%">
+        <ng-container matColumnDef="name">
+          <th width="30%" mat-header-cell *matHeaderCellDef mat-sort-header> Tên phòng</th>
+          <td width="30%" mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+        <ng-container matColumnDef="floor">
+          <th width="8%" mat-header-cell *matHeaderCellDef mat-sort-header> Tầng</th>
+          <td width="8%" mat-cell *matCellDef="let element">tầng {{element.floor}} </td>
+        </ng-container>
+        <ng-container matColumnDef="capacity">
+          <th width="10%" mat-header-cell *matHeaderCellDef mat-sort-header> Sức chứa</th>
+          <td width="10%" mat-cell *matCellDef="let element"> {{element.capacity}} người</td>
+        </ng-container>
+        <ng-container matColumnDef="area">
+          <th width="15%" mat-header-cell *matHeaderCellDef mat-sort-header> Diện tích phòng</th>
+          <td width="15%" mat-cell *matCellDef="let element"> {{element.area}} m2</td>
+        </ng-container>
+        <ng-container matColumnDef="asset">
+          <th width="32%" mat-header-cell *matHeaderCellDef mat-sort-header> Thiết bị hiện có</th>
+          <td width="32%" mat-cell *matCellDef="let element"> {{element.assetRoom}} </td>
+        </ng-container>
+        <ng-container matColumnDef="resgister">
+          <th width="5%" mat-header-cell *matHeaderCellDef mat-sort-header> Đăng kí</th>
+          <td width="5%" mat-cell *matCellDef="let element">
+            <button (click)="test(element.id)" mat-raised-button style="background-color: #5680E9 !important;
   color: white;font-weight: bold;border: none;outline: none;">
-            <mat-icon>add</mat-icon>
-          </button>
-        </td>
-      </ng-container>
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>
+              <mat-icon>add</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+        <ng-container>
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </ng-container>
+      </table>
+    </div>
   </div>
-</div>
+</ng-container>

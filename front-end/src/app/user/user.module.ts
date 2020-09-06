@@ -4,12 +4,12 @@ import {UserRoutingModule} from './user-routing.module';
 import {RouterModule} from '@angular/router';
 import {ShareModule} from '../shares/share.module';
 import {MaterialModule} from '../shares/material.module';
-import {SearchRoomComponent} from './search-room/search-room.component';
-import { TestComponent } from './test/test.component';
+import {NotificationComponent, SearchRoomComponent} from './search-room/search-room.component';
+import {TestComponent} from './test/test.component';
 
 
 @NgModule({
-  declarations: [SearchRoomComponent, TestComponent],
+  declarations: [SearchRoomComponent, TestComponent, NotificationComponent],
   exports: [],
   imports: [
     CommonModule,

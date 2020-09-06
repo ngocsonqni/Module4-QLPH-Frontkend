@@ -7,8 +7,7 @@ import {FormBuilder, FormGroup} from '@angular/forms';
 import {Room} from '../../models/room';
 import {TypeRoom} from '../../models/type-room';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
-import {HttpClient} from '@angular/common/http';
-
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-search-room',
@@ -19,8 +18,8 @@ export class SearchRoomComponent implements OnInit {
   regionList: Region[];
   typeMeetingList: TypeRoom[];
   searchRoomForm: FormGroup;
-  assetMap = new Map([['projector', false], ['audio', false], ['paper', false], ['pen', false],
-    ['laptop', false], ['table', false], ['chair', false], ['board', false]]);
+  assetMap = new Map([['1', false], ['2', false], ['3', false], ['4', false],
+    ['5', false], ['6', false], ['7', false], ['8', false]]);
   starttime = new Date();
   endtime = new Date();
   beginDate: string;
@@ -32,7 +31,8 @@ export class SearchRoomComponent implements OnInit {
   constructor(private searchroomService: SearchRoomService,
               private route: Router,
               private formBuilder: FormBuilder,
-              public dialog: MatDialog) {
+              public dialog: MatDialog,
+              private snackBar: MatSnackBar) {
   }
 
   ngOnInit(): void {
@@ -89,17 +89,32 @@ export class SearchRoomComponent implements OnInit {
   }
 
   resuilt(): void {
-    this.dialog.open(DialogResultTableComponent, {
-      width: '1500px',
-      height: '500px',
-      data: {
-        data: this.resultSearchRoom,
-        begin: this.beginDate,
-        end: this.endDate,
-        asset: this.assetRoom
-      }
-    });
+    if (this.resultSearchRoom.length > 0) {
+      this.dialog.open(DialogResultTableComponent, {
+        maxWidth: '1500px',
+        maxHeight: '500px',
+        data: {
+          data: this.resultSearchRoom,
+          begin: this.beginDate,
+          end: this.endDate,
+          asset: this.assetRoom
+        }
+      });
+    } else {
+      this.snackBar.openFromComponent(NotificationComponent, {
+        duration: 5 * 1000,
+        horizontalPosition: 'end',
+        verticalPosition: 'top'
+      });
+    }
   }
+}
+
+@Component({
+  selector: 'app-notification',
+  templateUrl: 'notifical.html'
+})
+export class NotificationComponent {
 }
 
 @Component({
@@ -112,13 +127,11 @@ export class DialogResultTableComponent implements OnInit {
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any,
               private route: Router,
-              public dialogRef: MatDialogRef<DialogResultTableComponent>,
-              private httpClient: HttpClient) {
-
+              public dialogRef: MatDialogRef<DialogResultTableComponent>) {
   }
 
   ngOnInit(): void {
-
+    console.log(this.dataSource.length);
   }
 
   test(idRoom: number): void {
