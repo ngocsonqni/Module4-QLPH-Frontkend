@@ -1,4 +1,4 @@
-import {Sort} from './sort';
+import {MySort, Sort} from './sort';
 
 export class Pageable {
   public constructor() {
@@ -15,4 +15,5 @@ export class Pageable {
   offset: number;
   unPaged: boolean;
   paged: boolean;
+  mySort: MySort;
 }

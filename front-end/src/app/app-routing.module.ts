@@ -9,6 +9,8 @@ import {ManagementNewBookingComponent} from './admin/management-new-booking/mana
 import {SearchRoomComponent} from './user/search-room/search-room.component';
 import {RoomComponent} from './admin/room/room.component';
 import {TestComponent} from './user/test/test.component';
+import {NotificationComponent} from './user/notification/notification.component';
+import {ReportComponent} from './user/report/report.component';
 
 const routes: Routes = [
   {
@@ -30,7 +32,14 @@ const routes: Routes = [
       },
       {
         path: 'test', component: TestComponent
-      }]
+      },
+      {
+        path: 'notification', component: NotificationComponent
+      },
+      {
+        path: 'report', component: ReportComponent
+      }
+    ]
   },
 
   {

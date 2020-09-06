@@ -20,6 +20,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {NgxMatDatetimePickerModule, NgxMatNativeDateModule} from '@angular-material-components/datetime-picker';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 @NgModule({
   declarations: [],
@@ -48,6 +49,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     NgxMatNativeDateModule,
     MatDialogModule,
     MatProgressSpinnerModule,
+    MatAutocompleteModule
   ], exports: [
     MatDatepickerModule,
     MatFormFieldModule,
@@ -72,6 +74,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     NgxMatNativeDateModule,
     MatDialogModule,
     MatProgressSpinnerModule,
+    MatAutocompleteModule
   ],
   providers: [MatDatepickerModule],
 })

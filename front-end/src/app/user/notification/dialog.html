@@ -1,0 +1,37 @@
+<div class="col-cl-12">
+  <h2 mat-dialog-title>CHI TIẾT BÁO CÁO</h2>
+  <mat-dialog-content class="mat-typography">
+    <div class="divInfor">
+      <label style="width: 150px">Ngày tạo : </label>
+      <label>{{data.notification.requestDate |date: 'short'}} </label>
+    </div>
+    <div class="divInfor">
+      <label style="width: 150px"> Ngày phản hồi : </label>
+      <label *ngIf="data.notification.repondDate!==null">{{data.notification.repondDate |date: 'short'}} </label>
+      <label *ngIf="data.notification.repondDate===null"> ---------------------------------------- </label>
+    </div>
+    <div class="divInfor">
+      <label style="width: 150px"> Tình trạng : </label>
+      <label>{{data.notification.status}} </label>
+    </div>
+    <div class="divInfor">
+      <label style="width: 150px"> Phòng : </label>
+      <label>{{data.notification.room.name}} </label>
+    </div>
+    <div class="divInfor">
+      <mat-label>Nội dung báo cáo :</mat-label>
+      <mat-form-field style="display: block; margin-top: 15px; padding: 0px" appearance="outline">
+        <textarea readonly matInput cols="10" rows="12" style="line-height: 30px">{{data.notification.content}}</textarea>
+      </mat-form-field>
+    </div>
+
+
+
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-raised-button  class="myButton" color="primary" [mat-dialog-close]="true">Đóng</button>
+  </mat-dialog-actions>
+
+
+</div>
+

@@ -1,0 +1,26 @@
+.divInfor{
+  display: block;
+  clear: both;
+}
+::ng-deep .mat-dialog-actions {
+  padding: 0;
+}
+.myButton{
+  min-width:  120px;
+  margin-bottom: 20px;
+  margin-top: 0;
+}
+::ng-deep .mat-dialog-title{
+  margin: 0px;
+  position: relative;
+  top: -10px;
+  color: dodgerblue;
+
+}
+
+.mat-form-field-wrapper{
+  padding-bottom: 0px;
+}
+.mat-form-field-infix{
+  border: 0;
+}
