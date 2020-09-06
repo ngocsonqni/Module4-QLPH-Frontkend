@@ -1,27 +1,92 @@
-<div class="container-fluid">
-  <div class="row mt-3">
-    <div class="col-md-2">
-      <button class="w-100 border-0" mat-raised-button routerLink="room">Quản lý phòng họp</button>
-    </div>
-    <div class="col-md-2">
-      <button class="w-100 border-0" mat-raised-button>Quản lý tài sản</button>
-    </div>
-    <div class="col-md-2">
-      <button class="w-100" mat-raised-button>Quản lý người dùng</button>
-    </div>
-    <div class="col-md-2">
-      <button class="w-100" mat-raised-button>Thống kê</button>
-    </div>
-    <div class="col-md-2">
-      <button class="w-100" mat-raised-button>Xem phản hồi</button>
-    </div>
-    <div class="col-md-1 ml-5">
-      <button class="w-100 dropdown-toggle" mat-button [matMenuTriggerFor]="menu">Admin</button>
-      <mat-menu class="w-auto" #menu="matMenu">
-        <button class="w-100" mat-menu-item>Đổi mật khẩu</button>
-        <button class="w-100" mat-menu-item>Đăng xuất</button>
-      </mat-menu>
-    </div>
-  </div>
- <router-outlet></router-outlet>
+<mat-toolbar class="">
+<mat-toolbar-row class="">
+  <a fxHide="" fxShow.xs="" [mat-menu-trigger-for]="mainMenu"  mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+    <mat-icon>menu</mat-icon>
+  </a>
+
+  <mat-menu #mainMenu="matMenu">
+    <a mat-menu-item>
+      <span [routerLink]="['/admin/new-booking']">ĐẶT PHÒNG MỚI</span>
+    </a >
+
+    <a mat-menu-item>
+      <span >QUẢN LÝ TÀI SẢN</span>
+    </a>
+    <a mat-menu-item>
+      <span >QUẢN LÝ NGƯỜI DÙNG</span>
+    </a>
+    <a mat-menu-item>
+      <span>THỐNG KÊ</span>
+    </a>
+    <a mat-menu-item>
+      <span>XEM PHẢN HỒI</span>
+    </a>
+  </mat-menu>
+  <span>CodeAdmin</span>
+  <span class="example-spacer"></span>
+<div fxHide.sm="" fxHide.xs="">
+  <a mat-button routerLink="new-booking">ĐẶT PHÒNG MỚI</a>
+  <a mat-button >QUẢN LÝ TÀI SẢN</a>
+  <a mat-button>QUẢN LÝ NGƯỜI DÙNG</a>
+  <a mat-button>THỐNG KÊ</a>
+  <a mat-button>XEM PHẢN HỒI</a>
 </div>
+  <span class="example-spacer"></span>
+
+  <a mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+    <mat-icon style=" font-size: 30px;">mail</mat-icon>
+  </a>
+
+  <a mat-icon-button matBadge="8" matBadgeColor="warn" [matMenuTriggerFor]="menu">
+    <mat-icon style=" font-size: 30px" class="toolbar-icon">notifications</mat-icon>
+  </a>
+
+  <mat-menu #menu="matMenu" >
+    <mat-list>
+      <mat-list-item >
+        <img class="notification-avatar" src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="" mat-list-avatar/>
+        <div mat-line>thanh vừa đặt phòng mới</div>
+        <div mat-line>4 giò trước</div>
+        <div mat-line><a href="">Xem chi tiết</a></div>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item >
+        <img class="notification-avatar"  src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="" mat-list-avatar/>
+        <div mat-line>thanh vừa đặt phòng mới để làm cái chi đó không biết nữa</div>
+        <div mat-line>4 giò trước</div>
+        <div mat-line><a href="">Xem chi tiết</a></div>
+      </mat-list-item>
+    </mat-list>
+  </mat-menu>
+
+  <div class="pl-3">
+    <img class="mat-card-avatar avatar" src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="">
+
+  </div>
+  <a style="padding-left: 0" mat-button [matMenuTriggerFor]="menuAccount">
+    thanhtv
+  </a>
+
+  <mat-menu #menuAccount="matMenu">
+    <span mat-menu-item  routerLink="">
+      <mat-icon>login</mat-icon>
+      <span>Đăng xuất</span>
+    </span>
+
+    <span mat-menu-item>
+      <mat-icon>fingerprint</mat-icon>
+      <span>Đổi mật khẩu</span>
+    </span>
+  </mat-menu>
+
+</mat-toolbar-row>
+<mat-toolbar-row fxHide="" fxShow.sm=""  fxLayoutAlign="space-between center">
+  <a mat-button [routerLink]="['/admin/new-booking']">ĐẶT PHÒNG MỚI</a>
+  <a mat-button>QUẢN LÝ TÀI SẢN</a>
+  <a mat-button>QUẢN LÝ NGƯỜI DÙNG</a>
+  <a mat-button>THỐNG KÊ</a>
+  <a mat-button>XEM PHẢN HỒI</a>
+</mat-toolbar-row>
+</mat-toolbar>
+<router-outlet></router-outlet>
+

@@ -10,6 +10,8 @@ import {UserModule} from './user/user.module';
 import {PagenotfoundComponent} from './pagenotfound/pagenotfound.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ToastrModule} from 'ngx-toastr';
+import {FlexLayoutModule} from '@angular/flex-layout';
+
 import {MatButtonModule} from '@angular/material/button';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatExpansionModule} from '@angular/material/expansion';
@@ -42,6 +44,7 @@ import {MatTableModule} from '@angular/material/table';
       timeOut: 2000,
       positionClass: 'toast-top-center'
     }),
+    FlexLayoutModule,
     MatButtonModule,
     MatSidenavModule,
     MatExpansionModule,
