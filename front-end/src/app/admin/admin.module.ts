@@ -8,11 +8,13 @@ import {FusionChartsModule} from 'angular-fusioncharts';
 import * as FusionCharts from 'fusioncharts';
 import * as charts from 'fusioncharts/fusioncharts.charts';
 import * as FusionTheme from 'fusioncharts/themes/fusioncharts.theme.fusion';
+import { ListUsersComponent } from './list-users/list-users.component';
+import { CreateUserComponent } from './create-user/create-user.component';
 
 FusionChartsModule.fcRoot(FusionCharts, charts, FusionTheme);
 
 @NgModule({
-  declarations: [],
+  declarations: [ListUsersComponent, CreateUserComponent],
   imports: [
     CommonModule,
     MatIconModule,
