@@ -47,9 +47,13 @@
     </div>
     <span class="example-spacer"></span>
 
-    <a mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon"
+    <a *ngIf="notSeenList.length>0" mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon"
        [matMenuTriggerFor]="menu2" (click)="getTime()">
       <mat-icon [matBadge]="notSeenList.length|number" matBadgeColor="warn" style=" font-size: 30px;">mail</mat-icon>
+    </a>
+    <a *ngIf="notSeenList.length===0" mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon"
+       [matMenuTriggerFor]="menu2" (click)="getTime()">
+      <mat-icon  style=" font-size: 30px;">mail</mat-icon>
     </a>
 
     <mat-menu #menu2="matMenu">
@@ -60,7 +64,11 @@
                  mat-list-avatar/>
             <div mat-line>[{{item.notification.typeOfNotification.name}}] - Phòng {{item.notification.room.name}}</div>
             <div mat-line
-                 *ngIf="getDataDiff(item.notification.requestDate,this.time).day < 1"> {{getDataDiff(item.notification.requestDate, this.time).hour}}
+                 *ngIf="getDataDiff(item.notification.requestDate,this.time).day < 1 && getDataDiff(item.notification.requestDate,this.time).hour ===0"> {{getDataDiff(item.notification.requestDate, this.time).minute}}
+              phút trước trước
+            </div>
+            <div mat-line
+                 *ngIf="getDataDiff(item.notification.requestDate,this.time).day < 1 && getDataDiff(item.notification.requestDate,this.time).hour>0"> {{getDataDiff(item.notification.requestDate, this.time).hour}}
               giờ trước
             </div>
             <div mat-line
@@ -73,7 +81,9 @@
         </ng-container>
         <ng-container *ngIf="notSeenList.length===0" >
           <mat-list-item>
-            <div>Không có thông báo mới</div>
+            <img class="notification-avatar" src="https://b1.pngbarn.com/png/378/110/button-ui-system-icons-mail-mail-icon-art-png-clip-art.png" alt=""
+                 mat-list-avatar/>
+            <div mat-line>Không có thông báo mới</div>
           </mat-list-item>
           <mat-divider></mat-divider>
         </ng-container>
