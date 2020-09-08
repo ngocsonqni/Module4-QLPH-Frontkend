@@ -12,7 +12,7 @@ import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSortModule} from '@angular/material/sort';
-import {NgxMatSelectSearchModule} from 'ngx-mat-select-search';
+// import {NgxMatSelectSearchModule} from 'ngx-mat-select-search';
 import {NgxMatDatetimePickerModule} from '@angular-material-components/datetime-picker';
 
 
@@ -30,7 +30,7 @@ import {NgxMatDatetimePickerModule} from '@angular-material-components/datetime-
     MatPaginatorModule,
     MatTooltipModule,
     MatSortModule,
-    NgxMatSelectSearchModule,
+    // NgxMatSelectSearchModule,
     NgxMatDatetimePickerModule
   ], providers: []
 })
