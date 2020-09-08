@@ -10,20 +10,22 @@ import {DialogComponent, NotificationComponent} from './notification/notificatio
 import {ReportComponent} from './report/report.component';
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import {NgxMatSelectSearchModule} from "ngx-mat-select-search";
 
 
 @NgModule({
   declarations: [SearchRoomComponent, TestComponent, NotificationComponent, ReportComponent, DialogComponent],
   exports: [],
-  imports: [
-    CommonModule,
-    UserRoutingModule,
-    RouterModule,
-    ShareModule,
-    MaterialModule,
-    MatTableModule,
-    MatPaginatorModule
-  ], providers: []
+    imports: [
+        CommonModule,
+        UserRoutingModule,
+        RouterModule,
+        ShareModule,
+        MaterialModule,
+        MatTableModule,
+        MatPaginatorModule,
+        NgxMatSelectSearchModule
+    ], providers: []
 })
 export class UserModule {
 }
