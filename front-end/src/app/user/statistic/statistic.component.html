@@ -1,0 +1,197 @@
+<div class="container-fluid fontLetter backGroundTotal">
+
+  <div class="row searchFollow">
+      <div class="col-6 rColMain">
+        <div class="rCol">
+          <div class="titleIn">Theo thời gian</div>
+          <br>
+          <form>
+          <div class="row paddingIn">
+
+            <div class="col-6">
+<!--                          Từ ngày: <input type="date" class="inputRound form-control form-control-sm">-->
+              <mat-form-field>
+                <mat-label><span class="fontMaterial">Từ ngày</span></mat-label>
+                <input matInput [matDatepicker]="picker" #startDay [defaultValue]="startValue">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+            </div>
+            <div class="col-6">
+<!--                          Đến ngày: <input type="date" class="inputRound form-control form-control-sm">-->
+              <mat-form-field>
+                <mat-label><span class="fontMaterial">Đến ngày</span></mat-label>
+                <input matInput [matDatepicker]="picker1" #endDay [defaultValue]="endValue">
+                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                <mat-datepicker #picker1></mat-datepicker>
+              </mat-form-field>
+            </div>
+          </div>
+          <br>
+          <div class="row paddingIn">
+            <div class="col-12">
+              <button type="button" class="buttonPress pag btn" (click)="statisticTime(startDay.value, endDay.value)"><b>Thống kê</b></button>
+            </div>
+          </div>
+          </form>
+        </div>
+      </div>
+    <div class="col-6 rColMain">
+      <div class="rCol">
+        <div class="titleIn">Theo phòng</div>
+        <form>
+        <div class="row paddingIn">
+          <div class="col-6">
+            <mat-form-field>
+              <mat-label><span class="fontMaterial">Chọn phòng</span></mat-label>
+              <mat-select #searchRoom [(value)]="roomValueDefault">
+                                <mat-option *ngFor="let room of rooms" [value]="room.id">
+                                  {{room.name}}
+                                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="col-6">
+            <mat-form-field>
+              <mat-label><span class="fontMaterial">Chọn loại phòng</span></mat-label>
+              <mat-select #searchType [(value)]="typeValueDefault">
+                <mat-option *ngFor="let typeRoom of typeRooms" [value]="typeRoom.idTypeRoom">
+                  {{typeRoom.nameTypeRoom}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row paddingIn">
+          <div class="col-6">
+            <mat-form-field>
+              <mat-label><span class="fontMaterial">Ngày đăng kí</span></mat-label>
+              <input matInput [matDatepicker]="picker10" #searchBookingDay [value]="bookingDayValueDefault">
+              <mat-datepicker-toggle matSuffix [for]="picker10"></mat-datepicker-toggle>
+              <mat-datepicker #picker10></mat-datepicker>
+            </mat-form-field>
+          </div>
+          <div class="col-6"></div>
+        </div>
+        <div class="row paddingIn">
+          <div class="col-12 buttonTK">
+            <button type="button" class="buttonPress buttonTK2 btn pag" (click)="statisticRoom(searchRoom.value, searchType.value, searchBookingDay.value)"><b>Thống kê</b></button>
+          </div>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+<!--  <div class="row resultFollow" >-->
+<!--    <div class="col-12 resultSearch">-->
+<!--      <div class="result">-->
+<!--        <div class="titleIn2">Kết quả</div>-->
+<!--        <div class="row paddingInResult">-->
+<!--          <span>Phòng: {{roomValueDefault}}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-->
+<!--          <span>Đến ngày: 20-05-2020</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-->
+<!--          <span>Tổng số lần sử dụng: 100</span>-->
+<!--        </div>-->
+<!--        <br>-->
+<!--        <div class="row paddingIn">-->
+<!--          <table class="table table-hover table-striped" border="1px">-->
+<!--            <thead class="buttonPress">-->
+<!--            <tr>-->
+<!--              <th scope="col">STT</th>-->
+<!--              <th scope="col">Tên người đăng kí</th>-->
+<!--              <th scope="col">Tên phòng</th>-->
+<!--              <th scope="col">Loại cuộc họp</th>-->
+<!--              <th scope="col">Thời gian bắt đầu</th>-->
+<!--              <th scope="col">Thời gian kết thúc</th>-->
+<!--              <th scope="col">Ngày bắt đầu</th>-->
+<!--              <th scope="col">Ngày kết thúc</th>-->
+<!--              <th scope="col">Trạng thái</th>-->
+<!--            </tr>-->
+<!--            </thead>-->
+<!--            <tbody>-->
+<!--            <tr *ngFor="let bookingRoom of bookingRooms;let i=index">-->
+<!--              <td>{{i+1}}</td>-->
+<!--              <td></td>-->
+<!--              <td>{{bookingRoom.room.name}}</td>-->
+<!--              <td></td>-->
+<!--              <td>{{bookingRoom.startTime}}</td>-->
+<!--              <td>{{bookingRoom.endTime}}</td>-->
+<!--              <td>{{bookingRoom.startDate}}</td>-->
+<!--              <td>{{bookingRoom.endDate}}</td>-->
+<!--              <td>{{bookingRoom.bookingStatus}}</td>-->
+<!--            </tr>-->
+<!--            </tbody>-->
+<!--          </table>-->
+<!--        </div>-->
+<!--        <div class="row paddingIn pag1">-->
+<!--          <div class="pag2">-->
+<!--            <nav aria-label="Page navigation example">-->
+<!--              <ul class="pagination">-->
+<!--                <li class="page-item"><a class="page-link" href="#">Trước</a></li>-->
+<!--                <li class="page-item"><a class="page-link" href="#">1</a></li>-->
+<!--                <li class="page-item"><a class="page-link" href="#">2</a></li>-->
+<!--                <li class="page-item"><a class="page-link" href="#">3</a></li>-->
+<!--                <li class="page-item"><a class="page-link" href="#">Sau</a></li>-->
+<!--              </ul>-->
+<!--            </nav>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+  <div class="row resultFollow" >
+    <div class="col-12 resultSearch">
+      <div class="result">
+        <div class="titleIn2">Kết quả</div>
+        <div class="row paddingInResult">
+          <span>Phòng: {{roomValueDefault}}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <span>Đến ngày: 20-05-2020</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <span>Tổng số lần sử dụng: 100</span>
+        </div>
+        <br>
+        <div class="row paddingIn">
+          <table class="table table-hover table-striped" border="1px">
+            <thead class="buttonPress">
+            <tr>
+              <th scope="col">STT</th>
+              <th scope="col">Tên người đăng kí</th>
+              <th scope="col">Tên phòng</th>
+              <th scope="col">Loại cuộc họp</th>
+              <th scope="col">Thời gian bắt đầu</th>
+              <th scope="col">Thời gian kết thúc</th>
+              <th scope="col">Ngày bắt đầu</th>
+              <th scope="col">Ngày kết thúc</th>
+              <th scope="col">Trạng thái</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let bookingRoom of bookingRooms;let i=index">
+              <td>{{i+1}}</td>
+              <td></td>
+              <td>{{bookingRoom.room.name}}</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>{{bookingRoom.startDay}}</td>
+              <td>{{bookingRoom.endDay}}</td>
+              <td>{{bookingRoom.bookingStatus}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="row paddingIn pag1">
+          <div class="pag2">
+            <nav aria-label="Page navigation example">
+              <ul class="pagination">
+                <li class="page-item"><a class="page-link" href="#">Trước</a></li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><a class="page-link" href="#">Sau</a></li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

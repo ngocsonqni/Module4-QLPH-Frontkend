@@ -1,0 +1,121 @@
+.searchFollow{
+  height: 200px;
+}
+.resultFollow{
+  height: 430px;
+}
+.rColMain{
+  position: relative;
+}
+.rCol{
+  background: white;
+  border: #5680E9 solid 2px;
+  position: absolute;
+  top: 15px;
+  left: 33px;
+  width: 90%;
+  height: 94%;
+}
+.resultSearch{
+  position: relative;
+}
+.result{
+  background: white;
+  border: #5680E9 solid 2px;
+  position: absolute;
+  top: 15px;
+  left: 33px;
+  width: 95%;
+  height: 90%;
+}
+.titleIn{
+  color: white;
+  border: white solid 2px;
+  font-size: 20px;
+  width:30%;
+  margin-top:-12px;
+  margin-left:5px;
+  background:#5680E9;
+  text-align: center;
+}
+.titleIn2{
+  color: white;
+  border: white solid 2px;
+  font-size: 20px;
+  width:10%;
+  margin-top:-12px;
+  margin-left:5px;
+  background:#5680E9;
+  text-align: center;
+}
+.buttonStatic{
+  background: #5680E9;
+}
+.buttonPress{
+  background: #5680E9;
+  color: white;
+}
+.inputRound{
+  border-radius: 15px;
+}
+.paddingIn{
+  padding-left: 4%;
+  padding-right: 4%;
+}
+.pag {
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+.buttonTK{
+  position: relative;
+}
+.buttonTK2{
+  position: absolute;
+  top: -14px;
+}
+.pag1{
+  position: relative;
+}
+.pag2{
+  position: absolute;
+  right: 4%;
+}
+.page-link{
+  color: black;
+  border: 1px solid black;
+}
+.paddingInResult{
+  padding-left: 30%;
+}
+.fontLetter{
+  font-family: "Times New Roman";
+}
+.backGroundTotal{
+  background-image: url("https://cdn.hipwallpaper.com/i/76/78/UeGbja.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  height: 100vh;
+}
+.fontMaterial{
+  font-family: "Times New Roman";
+  color: black;
+}
+/*Di chuyển thống kê theo*/
+.mainTK{
+  position: relative;
+}
+.mainTK1{
+  top: 1px;
+  position: absolute;
+}
+.mainTK2{
+  top: 1px;
+  position: absolute;
+}
+/*end*/
+

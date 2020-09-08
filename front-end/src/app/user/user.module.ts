@@ -5,11 +5,14 @@ import {RouterModule} from '@angular/router';
 import {ShareModule} from '../shares/share.module';
 import {MaterialModule} from '../shares/material.module';
 import {SearchRoomComponent} from './search-room/search-room.component';
+import { StatisticComponent } from './statistic/statistic.component';
 
 
 @NgModule({
-  declarations: [SearchRoomComponent],
-  exports: [],
+  declarations: [SearchRoomComponent, StatisticComponent],
+  exports: [
+    StatisticComponent
+  ],
   imports: [
     CommonModule,
     UserRoutingModule,
