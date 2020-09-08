@@ -24,3 +24,9 @@
 .mat-form-field-infix{
   border: 0;
 }
+
+::ng-deep .cdk-global-scrollblock {
+  position: fixed;
+  width: 100%;
+  overflow-y: hidden;
+}
