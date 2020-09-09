@@ -11,6 +11,7 @@ import {RoomComponent} from './admin/room/room.component';
 import {TestComponent} from './user/test/test.component';
 import {NotificationComponent} from './user/notification/notification.component';
 import {ReportComponent} from './user/report/report.component';
+import {UserLoginComponent} from './user/user-login/user-login.component';
 
 const routes: Routes = [
   {
@@ -41,7 +42,7 @@ const routes: Routes = [
       }
     ]
   },
-
+  {path: '', component: UserLoginComponent},
   {
     path: '**', component: PagenotfoundComponent
   }
