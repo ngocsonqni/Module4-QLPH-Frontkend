@@ -48,6 +48,7 @@ export class NotificationComponent implements OnInit, AfterViewInit {
       res => {
         this.page = res;
         this.userNotificationList = res.content;
+
         this.dataSource = new MatTableDataSource<UserNotification>(this.userNotificationList);
 
         this.dataSource.sortingDataAccessor = (item, property: any) => {
