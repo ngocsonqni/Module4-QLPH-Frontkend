@@ -9,11 +9,11 @@
       <div>
         <mat-form-field>
           <mat-select formControlName="room" placeholder="Chọn phòng" #singleSelect [(ngModel)]="room">
-            <mat-option>
-              <ngx-mat-select-search
-                placeholderLabel="Tìm phòng"
-                noEntriesFoundLabel="'Không có kết quả trùng khớp'"></ngx-mat-select-search>
-            </mat-option>
+<!--            <mat-option>-->
+<!--              <ngx-mat-select-search-->
+<!--                placeholderLabel="Tìm phòng"-->
+<!--                noEntriesFoundLabel="'Không có kết quả trùng khớp'"></ngx-mat-select-search>-->
+<!--            </mat-option>-->
             <mat-option *ngFor="let item of rooms" [value]="item">{{item.name}} </mat-option>
           </mat-select>
           <mat-error *ngIf="reportForm.get('room').invalid">Bạn chưa chọn phòng</mat-error>

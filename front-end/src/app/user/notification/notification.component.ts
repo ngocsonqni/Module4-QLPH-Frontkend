@@ -1,19 +1,19 @@
-import {AfterViewInit, Component, Inject, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
+import {AfterViewInit, Component, Inject, OnInit, Output, ViewChild, ViewEncapsulation, EventEmitter, Injector} from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
 
 import {UserNotification} from '../../models/user/user-notification';
-import {MatSort, MatSortable, Sort} from '@angular/material/sort';
+import {MatSort} from '@angular/material/sort';
 import {Router} from '@angular/router';
-import {CustomPaginationService} from '../../services/pagination/custom-pagination.service';
 import {Pageable} from '../../models/pagination/pageable';
 import {MatPaginator, PageEvent} from '@angular/material/paginator';
 import {Page} from '../../models/pagination/page';
 import {User} from '../../models/user/user';
-import {MAT_DIALOG_DATA, MatDialog} from '@angular/material/dialog';
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {MySort} from '../../models/pagination/sort';
 import {NotificationService} from '../../services/notification/notification.service';
 import {Room} from '../../models/room';
+import {UserComponent} from '../user.component';
 
 
 @Component({
@@ -28,13 +28,13 @@ export class NotificationComponent implements OnInit, AfterViewInit {
   pageable: Pageable = new Pageable();
   userNotificationList: UserNotification[];
   dataSource: MatTableDataSource<UserNotification>;
-  displayedColumns: string[] = ['seen', 'content', 'status', 'requestDate', 'repondDate'];
+  displayedColumns: string[] = ['seen', 'content', 'room', 'status', 'requestDate', 'repondDate'];
   user: User;
-
+  parentComponent: UserComponent;
 
   constructor(private notificationService: NotificationService, private router: Router, private dialog: MatDialog,
-              private snackBar: MatSnackBar) {
-
+              private snackBar: MatSnackBar, private injector: Injector) {
+    this.parentComponent = this.injector.get(UserComponent);
   }
 
   ngAfterViewInit(): void {
@@ -47,12 +47,11 @@ export class NotificationComponent implements OnInit, AfterViewInit {
     this.notificationService.getAll(this.user, this.pageable).subscribe(
       res => {
         this.page = res;
-        console.log(res);
         this.userNotificationList = res.content;
 
         this.dataSource = new MatTableDataSource<UserNotification>(this.userNotificationList);
 
-        this.dataSource.sortingDataAccessor = (item, property) => {
+        this.dataSource.sortingDataAccessor = (item, property: any) => {
           switch (property) {
             case 'content': {
               return item.notification.content;
@@ -82,7 +81,7 @@ export class NotificationComponent implements OnInit, AfterViewInit {
     const dialogRef = this.dialog.open(DialogComponent, {
       width: '800px',
       data: userNotification,
-      panelClass: 'matDialog'
+      panelClass: 'matDialog',
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -92,6 +91,16 @@ export class NotificationComponent implements OnInit, AfterViewInit {
       this.notificationService.markAsSeenById(userNotification.id).subscribe(
         res => {
           this.ngOnInit();
+          this.parentComponent.notificationService.getAllByDeleteFlagIsFalse(this.user.id).subscribe(
+            res1 => {
+              this.parentComponent.notSeenList = res1;
+              this.parentComponent.notSeenList.forEach(item => {
+                item.notification.requestDate = new Date(item.notification.requestDate);
+              });
+            },
+            error => {
+            }
+          );
         },
         error => {
         }
@@ -106,9 +115,35 @@ export class NotificationComponent implements OnInit, AfterViewInit {
       res => {
         this.ngOnInit();
         this.openSnackBar('Thành công', 'Đánh dấu đã đọc');
+        this.parentComponent.notificationService.getAllByDeleteFlagIsFalse(this.user.id).subscribe(
+          res1 => {
+            this.parentComponent.notSeenList = res1;
+            this.parentComponent.notSeenList.forEach(item => {
+              item.notification.requestDate = new Date(item.notification.requestDate);
+            });
+          },
+          error => {
+          }
+        );
       }, error => {
       }
     );
+  }
+
+  openConfirmDelete(id: number): void {
+    const dialogRef = this.dialog.open(ConfirmComponent, {
+      width: '500px',
+      data: id,
+      autoFocus: false,
+      panelClass: 'trend-dialog',
+
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result !== 0) {
+        this.deleteNotificationById(result);
+      }
+    });
+
   }
 
   deleteNotificationById(id: any): void {
@@ -171,5 +206,18 @@ export class NotificationComponent implements OnInit, AfterViewInit {
 })
 export class DialogComponent {
   constructor(@Inject(MAT_DIALOG_DATA) public data: UserNotification) {
+  }
+
+}
+
+
+@Component({
+  selector: 'app-confirm',
+  templateUrl: 'confirm.html',
+  styleUrls: ['confirm.scss'],
+})
+export class ConfirmComponent {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: number, public dialogRef: MatDialogRef<ConfirmComponent>) {
+    console.log(this.data);
   }
 }

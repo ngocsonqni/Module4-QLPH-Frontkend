@@ -1,0 +1,10 @@
+.myButton {
+  width: 120px;
+  margin-bottom: 15px;
+
+}
+::ng-deep .cdk-global-scrollblock {
+  position: fixed;
+  width: 100%;
+  overflow-y: hidden;
+}
