@@ -14,11 +14,12 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSortModule} from '@angular/material/sort';
 // import {NgxMatSelectSearchModule} from 'ngx-mat-select-search';
 import {NgxMatDatetimePickerModule} from '@angular-material-components/datetime-picker';
+import { UserLoginComponent } from './user-login/user-login.component';
 
 
 @NgModule({
   declarations: [SearchRoomComponent, TestComponent, NotificationComponent, ReportComponent,
-    DialogComponent, ConfirmComponent, ConfirmReportComponent],
+    DialogComponent, ConfirmComponent, ConfirmReportComponent, UserLoginComponent],
   exports: [],
   imports: [
     CommonModule,
