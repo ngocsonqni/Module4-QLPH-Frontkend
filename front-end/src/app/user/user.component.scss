@@ -22,12 +22,18 @@ $mat-card-header-size: 40px !default;
 }
 mat-list {
   padding: 0;
+
 }
 mat-list-item:hover{
   background-color: #f7f6f2;
+  cursor: pointer;
 }
 mat-toolbar-row  a:hover {
   color: white;
   text-decoration: none;
 }
 
+::ng-deep .mat-menu-panel{
+  max-height: 500px;
+  overflow: scroll;
+}

@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, Inject, OnInit, ViewChild} from '@angular/core';
 
 import {RoomService} from '../../services/users/room.service';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
@@ -14,6 +14,7 @@ import {MatAutocomplete, MatAutocompleteSelectedEvent, MatAutocompleteTrigger} f
 import {MatChipInputEvent} from '@angular/material/chips';
 import {Room} from '../../models/room';
 import {NotificationService} from '../../services/notification/notification.service';
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
 
 declare var $: any;
 
@@ -44,7 +45,7 @@ export class ReportComponent implements OnInit {
 
   constructor(private roomService: RoomService, private fb: FormBuilder, private notificationService: NotificationService,
               private router: Router,
-              private snackBar: MatSnackBar) {
+              private snackBar: MatSnackBar, private dialog: MatDialog) {
     this.reportForm = this.fb.group({
       room: ['', Validators.required],
       content: ['', Validators.required],
@@ -78,15 +79,24 @@ export class ReportComponent implements OnInit {
       this.reportData = this.reportForm.value;
       this.reportData.requestDate = new Date();
       this.reportData.typeOfNotification = type;
-      this.notificationService.saveNotification(this.reportData, this.user.id).subscribe(
-        res => {
-          console.log('save Success');
-          this.openSnackBar('Thành công', 'Tạo báo cáo');
-          this.router.navigate(['/user/notification']);
-        },
-        error => {
+      const dialogRef = this.dialog.open(ConfirmReportComponent, {
+        width: '500px',
+        data: {formData: this.reportData, id: this.user.id}
+      });
+      dialogRef.afterClosed().subscribe(resuilt => {
+        if (resuilt !== 0) {
+          this.notificationService.saveNotification(resuilt.formData, resuilt.id).subscribe(
+            res => {
+              console.log('save Success');
+              this.openSnackBar('Thành công', 'Tạo báo cáo');
+              this.router.navigate(['/user/notification']);
+            },
+            error => {
+            }
+          );
         }
-      );
+
+      });
     }
 
   }
@@ -187,5 +197,15 @@ export class ReportComponent implements OnInit {
     console.log(event);
 
     return [];
+  }
+}
+
+@Component({
+  selector: 'app-confirm',
+  templateUrl: 'confirm.html',
+  styleUrls: ['confirm.scss'],
+})
+export class ConfirmReportComponent {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: number, public dialogRef: MatDialogRef<ConfirmReportComponent>) {
   }
 }

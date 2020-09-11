@@ -8,6 +8,10 @@ import {Router} from '@angular/router';
 })
 export class TestComponent implements OnInit {
   test: string;
+  id: string;
+  begin: string;
+  end: string;
+  asset: string;
 
   constructor(private route: Router) {
     const navigation = this.route.getCurrentNavigation().extras.state as {
@@ -16,7 +20,10 @@ export class TestComponent implements OnInit {
       end: string,
       asset: string,
     };
-    this.test = navigation.id + '\n' + navigation.begin + '\n' + navigation.end + '\n' + navigation.asset;
+    this.id = navigation.id;
+    this.begin = navigation.begin;
+    this.end = navigation.end;
+    this.asset = navigation.asset;
     console.log(this.test);
   }
 

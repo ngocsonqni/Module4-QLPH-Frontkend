@@ -32,4 +32,8 @@ export class NotificationService {
   deleteById(id: number): Observable<void> {
     return this.httpClient.get<void>(this.API_URL + 'notification/delete/' + id);
   }
+
+  getAllByDeleteFlagIsFalse(id: number): Observable<UserNotification[]> {
+    return this.httpClient.get<UserNotification[]>(this.API_URL + 'notification/' + id + '/notSeen');
+  }
 }
