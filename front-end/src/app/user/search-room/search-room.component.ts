@@ -73,9 +73,14 @@ export class SearchRoomComponent implements OnInit {
       + ' ' + this.endtime.getHours() + ':' + this.endtime.getMinutes() + ':' + this.endtime.getSeconds();
     for (const entry of this.assetMap.entries()) {
       if (entry[1]) {
-        this.assetRoom += entry[0] + ',';
+        if (this.assetRoom !== '') {
+          this.assetRoom += ',' + entry[0];
+        } else {
+          this.assetRoom += entry[0];
+        }
       }
     }
+    console.log(this.searchRoomForm.value.numberOfUses);
     this.searchroomService.getRoom(this.searchRoomForm.value.typeMeeting, this.searchRoomForm.value.region,
       this.beginDate, this.endDate, this.searchRoomForm.value.numberOfUses,
       this.assetRoom).subscribe(next => {
@@ -86,6 +91,7 @@ export class SearchRoomComponent implements OnInit {
     }, error => {
       console.log(error);
     });
+
   }
 
   resuilt(): void {
@@ -131,7 +137,6 @@ export class DialogResultTableComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.dataSource.length);
   }
 
   test(idRoom: number): void {

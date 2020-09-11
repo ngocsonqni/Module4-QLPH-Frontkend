@@ -10,7 +10,7 @@ import {DialogComponent, NotificationComponent} from './notification/notificatio
 import {ReportComponent} from './report/report.component';
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
-
+import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 
 @NgModule({
   declarations: [SearchRoomComponent, TestComponent, NotificationComponent, ReportComponent, DialogComponent, NotificationCustomComponent],
@@ -22,7 +22,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     ShareModule,
     MaterialModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    NgxMatSelectSearchModule
   ], providers: []
 })
 export class UserModule {
