@@ -2,25 +2,22 @@
 <div class="col-xl-2"></div>
 <div class="col-xl-8">
   <h3 style="text-align: center">PHẢN HỒI</h3>
-
   <div class="row">
-
   </div>
   <div>
     <form [formGroup]="reportForm" (ngSubmit)="submitNotification()">
       <div>
         <mat-form-field>
           <mat-select formControlName="room" placeholder="Chọn phòng" #singleSelect [(ngModel)]="room">
-            <mat-option>
-              <ngx-mat-select-search
-                placeholderLabel="Tìm phòng"
-                noEntriesFoundLabel="'Không có kết quả trùng khớp'"></ngx-mat-select-search>
-            </mat-option>
+<!--            <mat-option>-->
+<!--              <ngx-mat-select-search-->
+<!--                placeholderLabel="Tìm phòng"-->
+<!--                noEntriesFoundLabel="'Không có kết quả trùng khớp'"></ngx-mat-select-search>-->
+<!--            </mat-option>-->
             <mat-option *ngFor="let item of rooms" [value]="item">{{item.name}} </mat-option>
           </mat-select>
           <mat-error *ngIf="reportForm.get('room').invalid">Bạn chưa chọn phòng</mat-error>
         </mat-form-field>
-
       </div>
    <div>
      <mat-form-field class="example-chip-list">

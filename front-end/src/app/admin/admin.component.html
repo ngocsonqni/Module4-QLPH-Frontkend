@@ -1,3 +1,4 @@
+
 <mat-toolbar class="">
   <mat-toolbar-row class="">
     <a fxHide="" fxShow.xs="" [mat-menu-trigger-for]="mainMenu" mat-icon-button class="example-icon"
@@ -9,7 +10,6 @@
       <a mat-menu-item>
         <span [routerLink]="['/admin/new-booking']">ĐẶT PHÒNG MỚI</span>
       </a>
-
       <a mat-menu-item>
         <span>QUẢN LÝ TÀI SẢN</span>
       </a>
@@ -26,18 +26,16 @@
     <span>CodeAdmin</span>
     <span class="example-spacer"></span>
     <div fxHide.sm="" fxHide.xs="">
-      <a mat-button routerLink="new-booking">ĐẶT PHÒNG MỚI</a>
+      <a mat-button routerLink="room">ĐẶT PHÒNG MỚI</a>
       <a mat-button>QUẢN LÝ TÀI SẢN</a>
       <a mat-button routerLink="list-user">QUẢN LÝ NGƯỜI DÙNG</a>
       <a mat-button>THỐNG KÊ</a>
       <a mat-button>XEM PHẢN HỒI</a>
     </div>
     <span class="example-spacer"></span>
-
     <a mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
       <mat-icon style=" font-size: 30px;">mail</mat-icon>
     </a>
-
     <a mat-icon-button matBadge="8" matBadgeColor="warn" [matMenuTriggerFor]="menu">
       <mat-icon style=" font-size: 30px" class="toolbar-icon">notifications</mat-icon>
     </a>
