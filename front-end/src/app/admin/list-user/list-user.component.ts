@@ -9,11 +9,11 @@ import * as $ from 'jquery';
   styleUrls: ['./list-user.component.scss']
 })
 export class ListUserComponent implements OnInit {
-  size = 7;
+  size = 5;
   pageClicked = 0;
   memberList: Member[];
   pages = [];
-  totalPages = 1;
+  totalPages = 0;
   key = '';
   constructor(private adminService: AdminService) { }
 
@@ -29,7 +29,7 @@ export class ListUserComponent implements OnInit {
           this.memberList = data.content;
           this.totalPages = data.totalPages;
           if (this.memberList.length < 6) {
-            $('.table').attr('style', 'margin-bottom: ' + ((6 - this.memberList.length) * 60) + 'px');
+            $('.table').attr('style', 'margin-bottom: ' + ((6 - this.memberList.length) * 30) + 'px');
           } else {
             $('.table').attr('style', 'margin-bottom: 0');
           }
@@ -39,6 +39,9 @@ export class ListUserComponent implements OnInit {
         }
       }, error => console.log(error)
     );
+  }
+  search(): void {
+    this.ngOnInit();
   }
   onPrevious(): void {
     if (this.pageClicked > 0) {

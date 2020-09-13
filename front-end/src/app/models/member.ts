@@ -1,10 +1,11 @@
 import {Role} from './role';
 
 export class Member {
-  id: number;
+  userId: number;
   username: string;
   fullName: string;
   password: string;
   position: string;
+  deleteFlag: boolean;
   role: Role;
 }

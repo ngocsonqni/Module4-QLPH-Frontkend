@@ -10,5 +10,11 @@
   background-repeat: no-repeat;
   background-size: cover;
   color: white;
+}
+.row1:nth-child(even){
+  background-color: #e4f1ff;
+}
 
+.row1:nth-child(odd){
+  background-color: white;
 }
