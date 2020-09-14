@@ -1,0 +1,74 @@
+<h2 class="text-center text-light pt-4 pb-4">Quản Lý Tài Khoản </h2>
+
+<div class="container bg-light pt-3">
+  <div class="d-flex justify-content-between">
+    <button mat-raised-button class="btn-add">
+      <a class="text-light text-decoration-none" [routerLink]="['/admin/create-user']">Thêm Tài Khoản</a>
+      <a mat-button routerLink="create-user" hidden>Thêm Tài Khoản</a>
+    </button>
+    <form class="form-inline" (keyup.enter)="search()">
+      <input class="form-control mr-sm-2 h-auto" type="search"
+             [(ngModel)]="key" name='search' type="text" class="form-control searchInput" placeholder="Tìm Kiếm" aria-label="Search">
+      <button mat-raised-button class="btn-search ml-2" (click)="search()">Tìm Kiếm</button>
+    </form>
+  </div>
+  <br>
+  <div class="table-responsive" id="newAccount">
+    <table class="table">
+      <thead>
+      <tr class="table-title">
+        <th scope="col">#</th>
+        <th scope="col">Họ Tên</th>
+        <th scope="col">Tên Đăng Nhập</th>
+        <th scope="col">Quyền</th>
+        <th scope="col">Bộ Phận</th>
+        <th scope="col">Sửa</th>
+        <th scope="col">Xóa</th>
+      </tr>
+      </thead>
+      <tbody *ngFor="let member of memberList" class="row1">
+      <tr>
+        <th scope="row" >{{member.userId}}</th>
+        <td>{{member.fullName}}</td>
+        <td>{{member.username}}</td>
+        <td *ngIf="member.role.roleName=='admin'">Admin</td>
+        <td *ngIf="member.role.roleName=='user'">Nhân Viên </td>
+        <td>{{member.position}}</td>
+        <td><a><span class="material-icons">edit</span></a></td>
+        <td><a><span class="material-icons">delete</span></a></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="d-flex justify-content-end ">
+    <nav aria-label="Page navigation ">
+      <ul class="pagination float-right mr-5">
+        <!--          <li *ngIf="pageClicked>0" class="page-item" (click)="onFirst()"><a class="page-link">First</a></li>-->
+        <li class="page-item" (click)="onPrevious()" [ngClass]="pageClicked==0?'disabled':''">
+          <a class="page-link">Trang trước</a>
+        </li>
+        <li *ngIf="pageClicked != 0" class="page-item" (click)="getAllMemberWithPage(pages[pageClicked-1])">
+          <a class="page-link">{{pageClicked}}</a>
+        </li>
+        <li [ngClass]="(pageClicked == pages[pageClicked]) ? 'active' : ''" class="page-item"
+            (click)="getAllMemberWithPage(pages[pageClicked])">
+          <a class="page-link">{{pageClicked + 1}}</a>
+        </li>
+        <li *ngIf="pageClicked < pages.length -1" class="page-item"
+            (click)="getAllMemberWithPage(pages[pageClicked+1])">
+          <a class="page-link">{{pageClicked + 2}}</a>
+        </li>
+        <li *ngIf="pageClicked < pages.length -3" class="page-item">
+          <a class="page-link">...</a>
+        </li>
+        <li *ngIf="pageClicked < pages.length-2" class="page-item" (click)="onLast()">
+          <a class="page-link">{{pages[pages.length - 1] + 1}}</a>
+        </li>
+        <li class="page-item" (click)="onNext()" [ngClass]="pageClicked==totalPages-1?'disabled':''">
+          <a class="page-link">Trang kế</a>
+        </li>
+        <!--          <li class="page-item" (click)="onLast()"><a class="page-link">Last</a></li>-->
+      </ul>
+    </nav>
+  </div>
+</div>

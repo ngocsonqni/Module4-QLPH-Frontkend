@@ -16,11 +16,14 @@ import {MatSliderModule} from '@angular/material/slider';
 import {_MatMenuDirectivesModule, MatMenuModule} from '@angular/material/menu';
 import {MatButtonModule} from '@angular/material/button';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import { ListUserComponent } from './list-user/list-user.component';
+import { CreateUserComponent } from './create-user/create-user.component';
+import {RouterModule} from "@angular/router";
 
 FusionChartsModule.fcRoot(FusionCharts, charts, FusionTheme);
 
 @NgModule({
-  declarations: [ManagementNewBookingComponent, RoomComponent],
+  declarations: [ManagementNewBookingComponent, RoomComponent, ListUserComponent, CreateUserComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -35,7 +38,8 @@ FusionChartsModule.fcRoot(FusionCharts, charts, FusionTheme);
     _MatMenuDirectivesModule,
     MatMenuModule,
     MatButtonModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    RouterModule
   ]
 })
 export class AdminModule {

@@ -11,6 +11,8 @@ import {RoomComponent} from './admin/room/room.component';
 import {TestComponent} from './user/test/test.component';
 import {NotificationComponent} from './user/notification/notification.component';
 import {ReportComponent} from './user/report/report.component';
+import {ListUserComponent} from './admin/list-user/list-user.component';
+import {CreateUserComponent} from './admin/create-user/create-user.component';
 import {UserLoginComponent} from './user/user-login/user-login.component';
 
 const routes: Routes = [
@@ -23,7 +25,14 @@ const routes: Routes = [
       },
       {
         path: 'room', component: RoomComponent
-      }]
+      },
+      {
+        path: 'list-user', component: ListUserComponent,
+      },
+      {
+        path: 'create-user', component: CreateUserComponent
+      }
+      ]
   },
   {
     path: 'user', component: UserComponent,

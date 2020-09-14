@@ -1,0 +1,20 @@
+.btn-search, .btn-add {
+  background-color: #5680E9 !important;
+  color: white;
+  font-weight: bold;
+  border: none;
+  outline: none;
+}
+.table-title{
+  background-image: url("https://cdn.hipwallpaper.com/i/76/78/UeGbja.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
+}
+.row1:nth-child(even){
+  background-color: #e4f1ff;
+}
+
+.row1:nth-child(odd){
+  background-color: white;
+}

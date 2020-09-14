@@ -10,11 +10,10 @@ import {ConfirmComponent, DialogComponent, NotificationComponent} from './notifi
 import {ConfirmReportComponent, ReportComponent} from './report/report.component';
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
-import {MatTooltipModule} from '@angular/material/tooltip';
-import {MatSortModule} from '@angular/material/sort';
-// import {NgxMatSelectSearchModule} from 'ngx-mat-select-search';
+import {NgxMatSelectSearchModule} from 'ngx-mat-select-search';
+import {UserLoginComponent} from './user-login/user-login.component';
 import {NgxMatDatetimePickerModule} from '@angular-material-components/datetime-picker';
-import { UserLoginComponent } from './user-login/user-login.component';
+
 
 
 @NgModule({
@@ -29,9 +28,7 @@ import { UserLoginComponent } from './user-login/user-login.component';
     MaterialModule,
     MatTableModule,
     MatPaginatorModule,
-    MatTooltipModule,
-    MatSortModule,
-    // NgxMatSelectSearchModule,
+    NgxMatSelectSearchModule,
     NgxMatDatetimePickerModule
   ], providers: []
 })
