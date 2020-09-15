@@ -48,7 +48,7 @@ export class RoomComponent implements OnInit {
   }
 
   public getServerData(event?: PageEvent) {
-    this.roomService.findAll(event).subscribe(
+    this.roomService.search(event, this.name, this.floor, this.capacity, this.typeRoom, this.region, this.status).subscribe(
       response => {
         this.page = response;
         this.listRoom = response.content;
@@ -60,16 +60,14 @@ export class RoomComponent implements OnInit {
   }
 
   public search() {
-    this.pageEvent.pageIndex = 0;
-    this.pageEvent.pageSize = 5;
     this.roomService.search(this.pageEvent, this.name, this.floor, this.capacity, this.typeRoom, this.region, this.status).subscribe(response => {
         if (response == null) {
           this.toast.error('', 'Không tìm thấy dữ liệu', {
             timeOut: 3000
           });
         } else {
-          this.listRoom = response.content;
           this.page = response;
+          this.listRoom = response.content;
         }
       },
       error => {
